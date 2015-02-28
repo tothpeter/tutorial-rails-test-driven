@@ -18,6 +18,12 @@ class TodosController < ApplicationController
     end
   end
 
+  def complete
+    current_user.todos.find(params[:id]).touch :completed_at
+
+    redirect_to todos_path
+  end
+
   private 
   
   def todo_params

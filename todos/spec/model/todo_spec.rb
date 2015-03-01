@@ -24,3 +24,16 @@ describe Todo, "#complete!" do
     expect(todo).to be_completed
   end
 end
+
+describe Todo, "#incomplete!" do
+  it "makes todo incomplete" do
+    todo = Todo.create!(completed_at: Time.current)
+
+    expect(todo).to be_completed
+
+    todo.incomplete!
+    todo.reload
+
+    expect(todo).not_to be_completed
+  end
+end

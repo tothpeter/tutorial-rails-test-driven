@@ -6,11 +6,9 @@ feature "User sees own todos" do
 
     sign_in_as "someone_else@example"
 
-    expect(page).not_to have_css ".todos li", text: "Buy milk"
+    expect(page).not_to display_todo "Buy milk"
 
-    click_on "Add a new todo"
-    fill_in "Title", with: "Frist todo"
-    click_on "Submit"
+    create_todo "Frist todo"
 
     expect(page).to have_css ".todos li", text: "Frist todo"
     expect(page).not_to have_css ".todos li", text: "Buy milk"

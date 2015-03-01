@@ -19,7 +19,7 @@ class TodosController < ApplicationController
   end
 
   def complete
-    todo.touch :completed_at
+    todo.complete!
 
     redirect_to todos_path
   end

@@ -11,3 +11,16 @@ describe Todo, "#completed?" do
     expect(todo).not_to be_completed
   end
 end
+
+describe Todo, "#complete!" do
+  it "updates completed at" do
+    todo = Todo.create!(completed_at: nil)
+
+    expect(todo).not_to be_completed
+
+    todo.complete!
+    todo.reload
+
+    expect(todo).to be_completed
+  end
+end
